@@ -2,6 +2,7 @@
 
 public class playerMovement : MonoBehaviour {
 	public Rigidbody rb;
+	public gameControler gameControlerObject;
 	public float forwardForce = 2000f;
 	public float besideForce = 500f;
 	void FixedUpdate () {
@@ -17,6 +18,10 @@ public class playerMovement : MonoBehaviour {
 		if(Input.GetKey("a")){
 
 			rb.AddForce(-besideForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange ) ;
+		}
+		
+		if(transform.position.y < -1f){
+			gameControlerObject.endGame();
 		}
 	}
 }
